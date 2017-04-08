@@ -1,0 +1,8 @@
+var ConvertLib = artifacts.require("./ConvertLib.sol");
+var POFP = artifacts.require("./POFP.sol");
+
+module.exports = function(deployer) {
+  deployer.deploy(ConvertLib);
+  deployer.link(ConvertLib, POFP);
+  deployer.deploy(POFP);
+};
