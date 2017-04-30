@@ -2,24 +2,29 @@ pragma solidity ^0.4.2;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
-import "../contracts/MetaCoin.sol";
+import "../contracts/markets/POFP.sol";
 
-contract TestMetacoin {
+contract TestPOFP {
 
-  function testInitialBalanceUsingDeployedContract() {
-    MetaCoin meta = MetaCoin(DeployedAddresses.MetaCoin());
+  POFP market;
+  uint someValue;
 
-    uint expected = 10000;
-
-    Assert.equal(meta.getBalance(tx.origin), expected, "Owner should have 10000 MetaCoin initially");
+  function beforeAll() {
+    market = POFP(DeployedAddresses.POFP());
   }
 
-  function testInitialBalanceWithNewMetaCoin() {
-    MetaCoin meta = new MetaCoin();
+  function beforeEach() {
+    someValue = 5;
+  }
 
-    uint expected = 10000;
+  function beforeEachAgain() {
+    someValue += 1;
+  }
 
-    Assert.equal(meta.getBalance(tx.origin), expected, "Owner should have 10000 MetaCoin initially");
+  function testSomeValueIsSix() {
+    uint expected = 6;
+
+    Assert.equal(someValue, expected, "someValue should have been 6");
   }
 
 }
