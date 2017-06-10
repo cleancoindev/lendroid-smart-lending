@@ -1,12 +1,12 @@
 // Import the page's CSS. Webpack will know what to do with it.
-import "../stylesheets/app.css";
+import "./app.css";
 
 // Import libraries we need.
 import { default as Web3} from 'web3';
 import { default as contract } from 'truffle-contract'
 
 // Import our contract artifacts and turn them into usable abstractions.
-import pofp_artifacts from '../../build/contracts/POFP.json'
+import pofp_artifacts from './contracts/POFP.json'
 
 // Agreement is our usable abstraction, which we'll use through the code below.
 var PofpAgreement = contract(pofp_artifacts);
@@ -37,52 +37,58 @@ window.App = {
       }
 
       accounts = accs;
+      console.log('accounts');
+      console.log(accounts);
       account = accounts[0];
-
-      self.refreshBalance();
+      console.log('account');
+      console.log(accounts);
+      // self.refreshBalance();
     });
   },
 
   setStatus: function(message) {
+    console.log('setStatus: ' + message);
     var status = document.getElementById("status");
     status.innerHTML = message;
   },
 
   refreshBalance: function() {
-    var self = this;
+    console.log('refreshBalance');
+    // var self = this;
 
-    var agreement;
-    PofpAgreement.deployed().then(function(instance) {
-      agreement = instance;
-      return agreement.getBalance.call(account, {from: account});
-    }).then(function(value) {
-      var balance_element = document.getElementById("balance");
-      balance_element.innerHTML = value.valueOf();
-    }).catch(function(e) {
-      console.log(e);
-      self.setStatus("Error getting balance; see log.");
-    });
+    // var agreement;
+    // PofpAgreement.deployed().then(function(instance) {
+    //   agreement = instance;
+    //   return agreement.getBalance.call(account, {from: account});
+    // }).then(function(value) {
+    //   var balance_element = document.getElementById("balance");
+    //   balance_element.innerHTML = value.valueOf();
+    // }).catch(function(e) {
+    //   console.log(e);
+    //   self.setStatus("Error getting balance; see log.");
+    // });
   },
 
   sendCoin: function() {
-    var self = this;
+    console.log('sendCoin');
+    // var self = this;
 
-    var amount = parseInt(document.getElementById("amount").value);
-    var receiver = document.getElementById("receiver").value;
+    // var amount = parseInt(document.getElementById("amount").value);
+    // var receiver = document.getElementById("receiver").value;
 
-    this.setStatus("Initiating transaction... (please wait)");
+    // this.setStatus("Initiating transaction... (please wait)");
 
-    var meta;
-    MetaCoin.deployed().then(function(instance) {
-      meta = instance;
-      return meta.sendCoin(receiver, amount, {from: account});
-    }).then(function() {
-      self.setStatus("Transaction complete!");
-      self.refreshBalance();
-    }).catch(function(e) {
-      console.log(e);
-      self.setStatus("Error sending coin; see log.");
-    });
+    // var meta;
+    // MetaCoin.deployed().then(function(instance) {
+    //   meta = instance;
+    //   return meta.sendCoin(receiver, amount, {from: account});
+    // }).then(function() {
+    //   self.setStatus("Transaction complete!");
+    //   self.refreshBalance();
+    // }).catch(function(e) {
+    //   console.log(e);
+    //   self.setStatus("Error sending coin; see log.");
+    // });
   }
 };
 
