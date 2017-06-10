@@ -1,4 +1,4 @@
-pragma solidity ^0.4.2;
+pragma solidity ^0.4.8;
 
 import '../dependencies/Owned.sol';
 import '../dependencies/ERC20.sol';
@@ -179,10 +179,10 @@ contract POFP is Market {
     }
 
     function newLoan(
+        uint collateralAmount,
         ERC20   collateralAsset,
+        uint loanAmount,
         ERC20   loanAsset,
-        uint128 collateralAmount,
-        uint128 loanAmount,
         uint    _duration
     ) returns (bytes32 id) {
         return bytes32(create(collateralAmount, collateralAsset, loanAmount, loanAsset, _duration));

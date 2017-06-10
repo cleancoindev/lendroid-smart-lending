@@ -1,4 +1,4 @@
-pragma solidity ^0.4.2;
+pragma solidity ^0.4.8;
 
 /// @title ERC20 Token Protocol
 /// @author Vii - Lendroid <vii@lendroid.io>
