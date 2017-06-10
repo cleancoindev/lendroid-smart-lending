@@ -1,6 +1,6 @@
-# Truffle Box (React)
+# Lendroid Smart Lending
 
-This box comes with everything you need to start using smart contracts from a react app. This is as barebones as it gets, so nothing stands in your way.
+This project is built on top of the barebones truffle-box-react project.
 
 ## Installation
 
@@ -47,14 +47,10 @@ This box comes with everything you need to start using smart contracts from a re
 
 ## FAQ
 
-* __Why is there both a truffle.js file and a truffle-config.js file?__
+* __Why use the Truffle-box-react barebones project?__
 
-    Truffle requires the truffle.js file be named truffle-config on Windows machines. Feel free to delete the file that doesn't correspond to your platform.
+    We have been very keen on using React on our Front-end. Seeing that Truffle-box-react met our initial requirements, we decided to build our project on top of it. Furthermore, while developing the UI, it becomes essential to have hot-reloading to accelerate the process. We found truffle-box-react as the least path of resistance to configure our development environment for this purpose.
 
-* __Where is my production build?__
+* __Will this project be inspired by other truffle-react repos?__
 
-    The production build will be in the build_webpack folder. This is because Truffle outputs contract compilations to the build folder.
-
-* __Where can I find more documentation?__
-
-    All truffle boxes are a marriage of [Truffle](http://truffleframework.com/) and a React setup created with [create-react-app](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md). Either one would be a great place to start!
+    If the situation demands, then yes. After the initial version is stabilized, we are looking to integrate truffle-box-auth or truffle-box-uport into this project.
